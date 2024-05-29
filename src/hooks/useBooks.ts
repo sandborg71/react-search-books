@@ -14,7 +14,10 @@ export const useBooks = (query: string): UseBooksResult => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!query) return;
+    if (!query) {
+      setBooks([]);
+      return;
+    }
 
     const fetchBooks = async () => {
       setLoading(true);

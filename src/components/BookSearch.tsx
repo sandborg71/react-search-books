@@ -28,6 +28,12 @@ export const BookSearch: React.FC<BookSearchProps> = ({ onSearch }) => {
     onSearch(query);
   };
 
+  const clear = () => {
+    navigate(`/`);
+    setQuery('');
+    onSearch('');
+  };
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSearch();
@@ -37,7 +43,7 @@ export const BookSearch: React.FC<BookSearchProps> = ({ onSearch }) => {
   return (
     <Box mt={4} mb={4}>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <TextField
             fullWidth
             variant="outlined"
@@ -47,10 +53,15 @@ export const BookSearch: React.FC<BookSearchProps> = ({ onSearch }) => {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-        <Grid item xs={2}>
-          <Button fullWidth variant="contained" color="primary" onClick={handleSearch}>
-            Search
-          </Button>
+        <Grid item xs={4}>
+          <Box display="flex" justifyContent="space-evenly">
+            <Button variant="contained" color="primary" onClick={handleSearch}>
+              Search
+            </Button>
+            <Button variant="contained" color="secondary" onClick={clear}>
+              Clear
+            </Button>
+          </Box>
         </Grid>
       </Grid>
     </Box>
