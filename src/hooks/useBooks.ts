@@ -23,7 +23,7 @@ export const useBooks = (query: string): UseBooksResult => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`https://ope  nlibrary.org/search.json?q=${query}`);
+        const response = await axios.get(`https://openlibrary.org/search.json?q=${query}`);
 
         setBooks(response.data.docs);
       } catch (err) {

@@ -1,3 +1,27 @@
+# Search Books React Demo App
+
+This project has been done in very limited time to just show how a simple mobile friendly app for searching books could be written.
+
+# Some features
+
+- Two pages one for search with results and a details page. Both can be bookmarked.
+- Mobile friendly layout using Material UI
+- Spinners, Errors and result messages
+- Images when available
+- Unit test examples of page and fetch hook
+
+# What could have been improved with more time
+
+- Full typescript data types for the API responses
+- Storing last search results and other data, for example in a context
+- Full coverage of unit tests
+- More specific handling when some data is missing
+- Pagination
+- Nicer look and feel, image handling
+- E2E integration tests with for example playwright
+- Prettier, eslint
+- ...
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
