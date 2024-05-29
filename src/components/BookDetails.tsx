@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, CircularProgress, Button } from '@mui/material';
 import { useBookDetails } from '../hooks/useBookDetails';
 
@@ -11,8 +11,15 @@ export const BookDetails: React.FC<BookDetailsProps> = ({ bookId }) => {
   const { book, loading, error } = useBookDetails(bookId);
   const navigate = useNavigate();
 
+  const location = useLocation();
+
   const handleBackClick = () => {
-    navigate(-1); // Navigate back to the previous page
+    if (location?.key === 'default') {
+      // no previous page
+      navigate('/');
+    } else {
+      navigate(-1); // Navigate back to the previous page
+    }
   };
 
   if (loading) return <CircularProgress />;

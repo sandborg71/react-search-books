@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from '@mui/material';
+import { Box, CircularProgress, Container } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import { BookList } from '../components/BookList';
 import { BookSearch } from '../components/BookSearch';
@@ -25,8 +25,13 @@ export const HomePage: React.FC = () => {
   return (
     <Container>
       <BookSearch onSearch={handleSearch} />
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <Box display="flex" justifyContent="center" mt={2}>
+          <CircularProgress />
+        </Box>
+      )}
       {error && <p>Error: {error}</p>}
+      {query && !error && !loading && books.length === 0 && <p>No results.</p>}
       <BookList books={books} />
     </Container>
   );
